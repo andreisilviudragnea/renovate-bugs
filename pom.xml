@@ -19,7 +19,7 @@
         <maven-scalac-scapegoat.version>1.4.11</maven-scalac-scapegoat.version>
         <maven-scalac-semanticdb.version>4.4.30</maven-scalac-semanticdb.version>
         <maven-scalafix.version>0.1.4_0.9.23</maven-scalafix.version>
-        <maven-organize-imports.version>0.5.0</maven-organize-imports.version>
+        <maven-organize-imports.version>0.6.0</maven-organize-imports.version>
         <maven-scala.version>4.5.6</maven-scala.version>
         <maven-scalafmt.version>1.1.1640084102.9f3d109</maven-scalafmt.version>
     </properties>
