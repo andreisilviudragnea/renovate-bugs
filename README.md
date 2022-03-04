@@ -1,0 +1,2 @@
+# renovate-bugs
+Renovate bugs
