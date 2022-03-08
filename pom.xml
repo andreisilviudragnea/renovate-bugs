@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.examplea</groupId>
+    <groupId>com.example</groupId>
     <artifactId>renovate-bugs</artifactId>
     <version>1.0-SNAPSHOT</version>
     <name>Renovate bugs</name>
@@ -17,11 +17,7 @@
         <scala.version>${scala.version.major}.${scala.version.minor}</scala.version>
 
         <maven-scalac-scapegoat.version>1.4.11</maven-scalac-scapegoat.version>
-        <maven-scalac-semanticdb.version>4.4.30</maven-scalac-semanticdb.version>
-        <maven-scalafix.version>0.1.4_0.9.23</maven-scalafix.version>
-        <maven-organize-imports.version>0.5.0</maven-organize-imports.version>
         <maven-scala.version>4.5.6</maven-scala.version>
-        <maven-scalafmt.version>1.1.1640084102.9f3d109</maven-scalafmt.version>
     </properties>
 
     <build>
@@ -40,29 +36,11 @@
                             <artifactId>scalac-scapegoat-plugin_${scala.version}</artifactId>
                             <version>${maven-scalac-scapegoat.version}</version>
                         </compilerPlugin>
-                        <compilerPlugin>
-                            <groupId>org.scalameta</groupId>
-                            <artifactId>semanticdb-scalac_${scala.version}</artifactId>
-                            <version>${maven-scalac-semanticdb.version}</version>
-                        </compilerPlugin>
                     </compilerPlugins>
                     <args>
-                        <arg>-deprecation</arg>
-                        <arg>-Xfatal-warnings</arg>
-                        <arg>-Wnumeric-widen</arg>
-                        <arg>-Xlint</arg>
-                        <arg>-Xlint:-byname-implicit</arg>
-                        <arg>-Ywarn-unused</arg>
-                        <arg>-Ywarn-value-discard</arg>
-                        <arg>-Wconf:cat=unused:info</arg>
-                        <arg>-language:higherKinds</arg>
                         <arg>-P:scapegoat:dataDir:${project.build.directory}</arg>
                         <arg>-P:scapegoat:reports:xml</arg>
-                        <!-- https://github.com/sksamuel/scapegoat/issues/239 -->
-                        <!-- https://github.com/sksamuel/scapegoat/issues/356 -->
-                        <arg>-P:scapegoat:disabledInspections:PartialFunctionInsteadOfMatch:VariableShadowing</arg>
                         <arg>-P:scapegoat:minimalWarnLevel:Warning</arg>
-                        <arg>-P:scapegoat:ignoredFiles:.*protobuf.*</arg>
                     </args>
                 </configuration>
                 <executions>
@@ -75,49 +53,6 @@
                     </execution>
                 </executions>
             </plugin>
-
-            <plugin>
-                <groupId>io.github.evis</groupId>
-                <artifactId>scalafix-maven-plugin_${scala.version.major}</artifactId>
-                <version>${maven-scalafix.version}</version>
-                <executions>
-                    <execution>
-                        <phase>process-test-classes</phase>
-                        <goals>
-                            <goal>scalafix</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <mode>CHECK</mode>
-                </configuration>
-                <dependencies>
-                    <dependency>
-                        <groupId>com.github.liancheng</groupId>
-                        <artifactId>organize-imports_${scala.version.major}</artifactId>
-                        <version>${maven-organize-imports.version}</version>
-                    </dependency>
-                </dependencies>
-            </plugin>
-
-            <plugin>
-                <groupId>org.antipathy</groupId>
-                <artifactId>mvn-scalafmt_${scala.version.major}</artifactId>
-                <version>${maven-scalafmt.version}</version>
-                <configuration>
-                    <validateOnly>true</validateOnly>
-                    <configLocation>.scalafmt.conf</configLocation>
-                </configuration>
-                <executions>
-                    <execution>
-                        <phase>process-resources</phase>
-                        <goals>
-                            <goal>format</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
         </plugins>
     </build>
-
 </project>
