@@ -16,7 +16,7 @@
         <scala.version.minor>7</scala.version.minor>
         <scala.version>${scala.version.major}.${scala.version.minor}</scala.version>
 
-        <maven-scalac-scapegoat.version>1.4.11</maven-scalac-scapegoat.version>
+        <maven-scalac-scapegoat.version>1.4.12</maven-scalac-scapegoat.version>
         <maven-scala.version>4.6.0</maven-scala.version>
     </properties>
 
