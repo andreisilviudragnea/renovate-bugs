@@ -17,7 +17,7 @@
         <scala.version>${scala.version.major}.${scala.version.minor}</scala.version>
 
         <maven-scalac-scapegoat.version>1.4.16</maven-scalac-scapegoat.version>
-        <maven-scala.version>4.9.2</maven-scala.version>
+        <maven-scala.version>4.9.5</maven-scala.version>
     </properties>
 
     <build>
